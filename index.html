@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Service Pros | Done Right. Done Fast.</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --red: #B81E1E;
+    --orange: #E8773A;
+    --light: #F5F2EE;
+    --white: #FFFFFF;
+    --gray: #6B7280;
+    --light-gray: #F9F9F9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--light);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--navy);
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-area img {
+    height: 50px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .brand-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .header-phone {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--orange);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .header-phone:hover { color: var(--white); }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 80px 40px 90px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: var(--red);
+    opacity: 0.08;
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 250px; height: 250px;
+    background: var(--orange);
+    opacity: 0.07;
+    border-radius: 50%;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #FFA366;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.2s;
+  }
+
+  .hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(38px, 7vw, 72px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.4s;
+  }
+
+  .hero h1 span { 
+    color: #FFB84D;
+  }
+
+  .hero-tagline {
+    font-size: 20px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 50px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.6s;
+  }
+
+  .cta-block {
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.8s;
+  }
+
+  .cta-label {
+    font-size: 17px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .phone-cta {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 22px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 8px 30px rgba(184,30,30,0.5);
+    margin-bottom: 20px;
+    display: block;
+    max-width: 580px;
+    margin: 0 auto 20px;
+    border: 3px solid rgba(255,255,255,0.2);
+    white-space: nowrap;
+  }
+
+  .phone-cta:hover {
+    background: #D42424;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(184,30,30,0.6);
+  }
+
+  .cta-sub {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: #FF6B00;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  .trust-item::before {
+    content: '✓';
+    background: rgba(255,255,255,0.3);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* SERVICES */
+  .section {
+    padding: 80px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #B81E1E;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--navy);
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 32px 28px;
+    border-top: 4px solid var(--red);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: all 0.25s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+    border-top-color: var(--orange);
+  }
+
+  .service-icon {
+    font-size: 36px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .service-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .service-desc {
+    font-size: 15px;
+    font-weight: 500;
+    color: #3B4556;
+    line-height: 1.6;
+  }
+
+  /* HOW IT WORKS */
+  .how-section {
+    background: var(--navy);
+    padding: 80px 40px;
+  }
+
+  .how-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .how-section .section-label { color: #FFA366; }
+  .how-section .section-title { color: var(--white); }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0;
+    position: relative;
+  }
+
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  .step {
+    text-align: center;
+    padding: 0 24px;
+    position: relative;
+  }
+
+  .step-number {
+    width: 80px;
+    height: 80px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0 auto 24px;
+    position: relative;
+    z-index: 1;
+    border: 4px solid var(--navy);
+    box-shadow: 0 4px 20px rgba(184,30,30,0.5);
+  }
+
+  .step-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .step-desc {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+  }
+
+  /* WHY US */
+  .why-section {
+    background: var(--light-gray);
+    padding: 80px 40px;
+  }
+
+  .why-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+  }
+
+  .why-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    background: var(--white);
+    padding: 28px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .why-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--navy);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .why-text h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .why-text p {
+    font-size: 15px;
+    font-weight: 500;
+    color: #3B4556;
+    line-height: 1.7;
+  }
+
+  /* COVERAGE */
+  .coverage-section {
+    background: var(--white);
+    padding: 80px 40px;
+    text-align: center;
+  }
+
+  .coverage-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .coverage-text {
+    font-size: 20px;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+
+  .coverage-text strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  .map-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--light);
+    border: 2px solid var(--navy);
+    border-radius: 50px;
+    padding: 16px 32px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: linear-gradient(135deg, var(--navy) 0%, #0f1c33 100%);
+    padding: 100px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: var(--red);
+    opacity: 0.06;
+    border-radius: 50%;
+  }
+
+  .final-cta-eyebrow {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #FFA366;
+    margin-bottom: 20px;
+  }
+
+  .final-cta h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .final-cta h2 span { 
+    color: #FFB84D;
+  }
+
+  .final-cta p {
+    font-size: 19px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 40px;
+  }
+
+  .final-phone {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(26px, 4vw, 48px);
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 24px 56px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 8px 30px rgba(184,30,30,0.5);
+    display: block;
+    max-width: 540px;
+    margin: 0 auto 40px;
+    border: 3px solid rgba(255,255,255,0.2);
+    white-space: nowrap;
+  }
+
+  .final-phone:hover {
+    background: #D42424;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(184,30,30,0.6);
+  }
+
+  .final-badges {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 0;
+  }
+
+  .final-badge {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .final-badge span { color: var(--orange); font-size: 18px; }
+
+  /* FOOTER */
+  footer {
+    background: #0d1829;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .footer-tagline {
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .footer-phone {
+    font-family: 'Oswald', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #FFA366;
+    text-decoration: none;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .footer-note {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+  }
+
+  .footer-disclaimer {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.4);
+    margin-top: 16px;
+    line-height: 1.5;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    header { padding: 14px 20px; }
+    .brand-name { font-size: 16px; }
+    .header-phone { font-size: 15px; }
+    .hero { padding: 60px 20px 70px; }
+    .hero-eyebrow span { display: block; }
+    .section { padding: 60px 20px; }
+    .how-section { padding: 60px 20px; }
+    .why-section { padding: 60px 20px; }
+    .coverage-section { padding: 60px 20px; }
+    .final-cta { padding: 70px 20px; }
+    footer { padding: 30px 20px; }
+    .trust-bar { gap: 20px; padding: 16px 20px; }
+    .trust-item { font-size: 13px; }
+    .steps-grid::before { display: none; }
+    .steps-grid { gap: 40px; }
+    .map-badge { font-size: 13px; padding: 12px 18px; letter-spacing: 0px; }
+    .phone-cta { padding: 18px 24px; letter-spacing: 1px; font-size: 24px !important; }
+    .final-phone { padding: 18px 24px; letter-spacing: 1px; font-size: 24px !important; }
+    .footer-note { font-size: 11px; letter-spacing: 0px; }
+    .cta-sub { font-size: 13px; letter-spacing: 0px; }
+  }
+
+  /* EXTRA SMALL MOBILE */
+  @media (max-width: 380px) {
+    .header-phone { font-size: 13px; letter-spacing: 0px; }
+    .brand-name { font-size: 13px; }
+    .logo-area img { height: 38px; }
+    .map-badge { font-size: 11px; padding: 10px 14px; letter-spacing: 0px; }
+    .phone-cta { padding: 14px 18px; letter-spacing: 0px; font-size: 20px !important; }
+    .final-phone { padding: 14px 18px; letter-spacing: 0px; font-size: 20px !important; }
+    .final-badge { font-size: 12px; }
+    .footer-note { font-size: 10px; }
+    .cta-sub { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-area">
+    <img src="Service-Pros-logo.png" alt="Service Pros Logo" style="height: 50px; width: auto;">
+    <div class="brand-name">Service Pros</div>
+  </div>
+  <a href="tel:8773598204" class="header-phone">📞 877-359-8204</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow"><span style="white-space: nowrap;">· Available 24 Hours</span> <span style="white-space: nowrap;">· 7 Days a Week</span></div>
+  <h1>Need Home Repairs<br><span>Done Right?</span></h1>
+  <p class="hero-tagline">One call connects you to trusted local professionals</p>
+  <div class="cta-block">
+    <div class="cta-label">Call Toll-Free Now</div>
+    <a href="tel:8773598204" class="phone-cta">📞 877-359-8204</a>
+    <div class="cta-sub"><span style="white-space: nowrap;">· Free Consultation</span><span style="white-space: nowrap;"> · No Obligation</span><span style="white-space: nowrap;"> · Real People Answer</span></div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">Professional Network</div>
+  <div class="trust-item">Same-Day Service Available</div>
+  <div class="trust-item">Service Excellence</div>
+  <div class="trust-item">Free Consultation</div>
+  <div class="trust-item">Wide US Coverage</div>
+</div>
+
+<!-- SERVICES -->
+<div style="background: var(--light);">
+  <div class="section">
+    <div class="section-label">What We Cover</div>
+    <div class="section-title">These Home Services & More.<br>One Number.</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🔧</span>
+        <div class="service-name">Appliance Repair</div>
+        <div class="service-desc">Refrigerators, washers, dryers, ovens, dishwashers & all major appliances</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">❄️</span>
+        <div class="service-name">HVAC & Heating</div>
+        <div class="service-desc">AC repair, heating systems, tune-ups, installation & emergency service</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🚿</span>
+        <div class="service-name">Plumbing</div>
+        <div class="service-desc">Drain cleaning, leak repair, water heaters, pipe repair & emergency calls</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">⚡</span>
+        <div class="service-name">Electrical</div>
+        <div class="service-desc">Panel upgrades, wiring, outlets, safety inspections & emergency repairs</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🏠</span>
+        <div class="service-name">Roofing & General Repairs</div>
+        <div class="service-desc">Roof repair, handyman services, carpentry & all general home repairs</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🧹</span>
+        <div class="service-name">Cleaning Services</div>
+        <div class="service-desc">Deep cleaning, move-in/out cleaning, regular maintenance & more</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🚪</span>
+        <div class="service-name">Garage Door Repair</div>
+        <div class="service-desc">Garage door repair, opener installation, spring replacement & maintenance</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🌿</span>
+        <div class="service-name">Landscaping</div>
+        <div class="service-desc">Lawn care, design, irrigation, tree trimming & seasonal maintenance</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🎨</span>
+        <div class="service-name">Painting Services</div>
+        <div class="service-desc">Interior & exterior painting, cabinet refinishing, staining & touch-ups</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-section">
+  <div class="how-inner">
+    <div class="section-label">Simple Process</div>
+    <div class="section-title">How It Works</div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-title">You Call</div>
+        <div class="step-desc">Call 877-359-8204. A real person answers 24/7 to help connect you with a local professional.</div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-title">We Match</div>
+        <div class="step-desc">We connect you instantly with a qualified professional in your local area.</div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-title">Job Done</div>
+        <div class="step-desc">Your local pro arrives fast, gets the job done right, and you're back to normal.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY CHOOSE US -->
+<div class="why-section">
+  <div class="why-inner">
+    <div class="section-label">The Service Pros Advantage</div>
+    <div class="section-title">Why Homeowners Trust Us</div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">📞</div>
+        <div class="why-text">
+          <h3>One Call Does It All</h3>
+          <p>Stop searching multiple companies. One call connects you to the right professional for any home service, anywhere in the US. We handle the search so you don't have to.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🔒</div>
+        <div class="why-text">
+          <h3>Trusted Professionals</h3>
+          <p>We connect you with established professionals in our network who are ready to help with your home service needs.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⚡</div>
+        <div class="why-text">
+          <h3>Same-Day Service Available</h3>
+          <p>Home emergencies can't wait. We connect you with professionals who often offer same-day appointments when available.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🌙</div>
+        <div class="why-text">
+          <h3>Available 24/7</h3>
+          <p>Day or night, weekday or weekend — help is always just one call away. We never close. Home emergencies don't wait, and neither should you.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💬</div>
+        <div class="why-text">
+          <h3>Free Consultation</h3>
+          <p>Call us with zero obligation. We'll match you with the right professional at the right price, completely free.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🏆</div>
+        <div class="why-text">
+          <h3>Done Right. Done Fast.</h3>
+          <p>We connect you with professionals committed to quality work, completed on time — your satisfaction is our priority.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NATIONWIDE COVERAGE -->
+<div class="coverage-section">
+  <div class="coverage-inner">
+    <div class="section-label">Our Reach</div>
+    <div class="section-title">Serving Homeowners<br>Across <span style="white-space: nowrap;">the United States</span></div>
+    <p class="coverage-text">
+      Wherever you are, we connect you with <strong>trusted local professionals in your area.</strong> From major metros to smaller cities — if you need home services, we have a pro near you.
+    </p>
+    <div class="map-badge">
+      🗺️ &nbsp; Available Across the United States
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-eyebrow">Don't Wait — Get Help Today</div>
+  <h2>Your Home Fixed.<br><span>Done Right. <span style="white-space: nowrap;">Done Fast.</span></span></h2>
+  <p>One call connects you to a trusted local professional</p>
+  <a href="tel:8773598204" class="final-phone">📞 877-359-8204</a>
+  <div class="final-badges">
+    <div class="final-badge"><span>✓</span> Free Consultation</div>
+    <div class="final-badge"><span>✓</span> Available 24/7</div>
+    <div class="final-badge"><span>✓</span> No Obligation</div>
+    <div class="final-badge"><span>✓</span> Same-Day Service</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Service Pros</div>
+  <div class="footer-tagline">Done Right. Done Fast.</div>
+  <a href="tel:8773598204" class="footer-phone">877-359-8204</a>
+  <div class="footer-note">· Professional Home Services · Available 24/7 · US Coverage</div>
+  <div class="footer-disclaimer">Service Pros connects homeowners with independent local professionals and does not directly perform repair services.</div>
+</footer>
+
+</body>
+</html>
