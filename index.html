@@ -28,7 +28,7 @@
   /* HEADER */
   header {
     background: var(--navy);
-    padding: 16px 40px;
+    padding: 20px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -45,14 +45,14 @@
   }
 
   .logo-area img {
-    height: 50px;
+    height: 100px;
     width: auto;
     flex-shrink: 0;
   }
 
   .brand-name {
     font-family: 'Oswald', sans-serif;
-    font-size: 22px;
+    font-size: 38px;
     font-weight: 700;
     color: var(--white);
     letter-spacing: 1px;
@@ -61,7 +61,7 @@
 
   .header-phone {
     font-family: 'Oswald', sans-serif;
-    font-size: 18px;
+    font-size: 28px;
     font-weight: 600;
     color: var(--orange);
     text-decoration: none;
@@ -247,7 +247,7 @@
     text-transform: uppercase;
     text-align: center;
     color: var(--navy);
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     letter-spacing: 1px;
   }
 
@@ -626,9 +626,9 @@
 
   /* MOBILE */
   @media (max-width: 768px) {
-    header { padding: 14px 20px; }
-    .brand-name { font-size: 16px; }
-    .header-phone { font-size: 15px; }
+    header { padding: 16px 20px; }
+    .brand-name { font-size: 24px; }
+    .header-phone { font-size: 17px; letter-spacing: 0px; }
     .hero { padding: 60px 20px 70px; }
     .hero-eyebrow span { display: block; }
     .section { padding: 60px 20px; }
@@ -646,13 +646,14 @@
     .final-phone { padding: 18px 24px; letter-spacing: 1px; font-size: 24px !important; }
     .footer-note { font-size: 11px; letter-spacing: 0px; }
     .cta-sub { font-size: 13px; letter-spacing: 0px; }
+    .logo-area img { height: 70px; }
   }
 
   /* EXTRA SMALL MOBILE */
   @media (max-width: 380px) {
-    .header-phone { font-size: 13px; letter-spacing: 0px; }
-    .brand-name { font-size: 13px; }
-    .logo-area img { height: 38px; }
+    .header-phone { font-size: 15px; letter-spacing: 0px; }
+    .brand-name { font-size: 20px; }
+    .logo-area img { height: 58px; }
     .map-badge { font-size: 11px; padding: 10px 14px; letter-spacing: 0px; }
     .phone-cta { padding: 14px 18px; letter-spacing: 0px; font-size: 20px !important; }
     .final-phone { padding: 14px 18px; letter-spacing: 0px; font-size: 20px !important; }
